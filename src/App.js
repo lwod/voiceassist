@@ -2,17 +2,23 @@ import React, {useState} from "react";
 import logo from './logo.svg';
 import './App.css';
 import VoiceVisualizer from "./voiceVisualizer";
+import VoiceAssistant from "./voiceAssistant";
 
-// const startButton = document.getElementById('start-btn');
+import path from 'path'
 
 
 function App() {
     
     const [isStarted, setIsStarted] = useState(false)
     const voiceVisualizer = new VoiceVisualizer()
+    const voiceAssistant = new VoiceAssistant()
     
     const changeModeAssistant = async (event)=>{
         if(!isStarted){
+            
+            await voiceAssistant.startAssistant()
+            
+            console.log(path.resolve('./'))
             
             await voiceVisualizer.startVisualization()
             setIsStarted(true)
